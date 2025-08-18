@@ -1,1 +1,12 @@
-# DVC pipeline stages
+stages:
+  train:
+    cmd: python src/classification/image_classification.py
+    deps:
+      - src/classification/image_classification.py
+      - data/train/images
+      - data/train/labels
+      - data/valid/images
+      - data/valid/labels
+    outs:
+      - model.pth
+
