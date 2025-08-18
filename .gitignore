@@ -10,3 +10,4 @@ template.py
 yolo11n.pt
 yolov8s.pt
 model.pth
+/data
