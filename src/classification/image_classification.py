@@ -9,6 +9,7 @@ from torch import nn
 import os
 from sklearn.metrics import f1_score, precision_score, recall_score, confusion_matrix
 import mlflow
+import dagshub
 
 train_dir= Path('data/train/images')
 val_dir= Path('data/valid/images')
@@ -64,6 +65,10 @@ def get_model(num_classes):
     return model
 
 def train_model(model, train_loader, val_loader, num_epochs=10, learning_rate=0.001):
+
+    dagshub.init(repo_owner='Abas527', repo_name='steel_manufacturing_defect_detection', mlflow=True)
+
+    mlflow.set_tracking_uri("https://dagshub.com/Abas527/steel_manufacturing_defect_detection.mlflow
 
     mlflow.set_experiment("Manufacturing defects Image_Classification_Experiment")
 
