@@ -68,7 +68,7 @@ def train_model(model, train_loader, val_loader, num_epochs=10, learning_rate=0.
 
     dagshub.init(repo_owner='Abas527', repo_name='steel_manufacturing_defect_detection', mlflow=True)
 
-    mlflow.set_tracking_uri("https://dagshub.com/Abas527/steel_manufacturing_defect_detection.mlflow
+    mlflow.set_tracking_uri("https://dagshub.com/Abas527/steel_manufacturing_defect_detection.mlflow")
 
     mlflow.set_experiment("Manufacturing defects Image_Classification_Experiment")
 
@@ -124,8 +124,9 @@ def train_model(model, train_loader, val_loader, num_epochs=10, learning_rate=0.
                     "recall": recall_score(predicted, labels, average='weighted'),
                 }
                 mlflow.log_metrics(model_summary, step=epoch) 
-    mlflow.log_artifact('model.pth')
-    mlflow.pytorch.log_model(model, "model")
+        torch.save(model.state_dict(), "model.pth")
+        mlflow.log_artifact("model.pth", artifact_path="model")
+
     return model
 
 def main():
@@ -136,9 +137,6 @@ def main():
     model = get_model(num_classes)
     trained_model = train_model(model, train_loader, val_loader, num_epochs=10, learning_rate=0.001)
 
-    # Save the trained model
-    torch.save(trained_model.state_dict(), 'model.pth')
-    print("Model saved as model.pth")
 
 if __name__ == "__main__":
     main()
