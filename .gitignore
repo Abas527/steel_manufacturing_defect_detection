@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+*.dvc
+.cache/
+mlruns/
+runs/
+data/
+template.py
+yolo11n.pt
+yolov8s.pt
+model.pth

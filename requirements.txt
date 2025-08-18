@@ -1,0 +1,12 @@
+# Add project dependencies here
+streamlit
+torch
+torchvision
+scikit-learn
+pillow
+numpy
+dvc
+dvc[http]  
+mlflow
+fastapi[standard]
+dagshub
