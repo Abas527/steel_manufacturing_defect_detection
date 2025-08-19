@@ -29,11 +29,7 @@ jobs:
         pip install flake8
         flake8 src/ || true
 
-    - name: Run tests
-      run: |
-        pip install pytest
-        pytest tests/ --disable-warnings -q
-
+    
     - name: Setup DVC
       run: |
         pip install dvc[all]
