@@ -9,4 +9,3 @@ stages:
       - data/valid/labels
     outs:
       - model.pth
-
