@@ -29,16 +29,15 @@ jobs:
         pip install flake8
         flake8 src/ || true
 
-    
     - name: Setup DVC
       run: |
         pip install dvc[all]
         dvc pull -r origin
 
-    - name: Train Model
+    - name: Reproduce DVC pipeline (train model)
       run: |
-        echo "Training model..."
-        python src/classification/image_classification.py
+        echo "Running DVC pipeline..."
+        dvc repro
 
     - name: Log to MLflow/Dagshub
       env:
